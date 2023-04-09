@@ -19,14 +19,17 @@ public class UserController {
 
     public void userMenu() {
         while (true) {
-            System.out.println("=====USER MENU=====");
+            System.out.println("\n=======================================");
+            System.out.println("                 USER MENU               ");
+            System.out.println("=======================================\n");
             System.out.println("1. View All User");
             System.out.println("2. Create or Add User");
             System.out.println("3. View User By Id");
             System.out.println("4. Update User");
             System.out.println("5. Delete User");
             System.out.println("6. Exit");
-            String menu = scannerUtil.readString("Choose menu: ");
+            System.out.println("=======================================\n");
+            String menu = scannerUtil.readString("Enter your choice: ");
 
             switch (menu) {
                 case "1" :
