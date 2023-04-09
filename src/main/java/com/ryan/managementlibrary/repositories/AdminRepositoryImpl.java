@@ -22,7 +22,7 @@ public class AdminRepositoryImpl implements AdminRepository{
             String sqlFindByUsername = "SELECT * FROM t_admin WHERE username = ?";
             return jdbcTemplate.queryForObject(sqlFindByUsername, new AdminMapper(), new Object[]{username});
         } catch (DataAccessException e) {
-            throw new Exception();
+            throw new RuntimeException();
         }
     }
 }
