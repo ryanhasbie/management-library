@@ -18,14 +18,17 @@ public class BookController {
 
     public void bookMenu() {
         while (true) {
-            System.out.println("=====BOOK MENU=====");
+            System.out.println("\n=======================================");
+            System.out.println("                 BOOK MENU               ");
+            System.out.println("=======================================\n");
             System.out.println("1. View All Book");
             System.out.println("2. Create or Add Book");
             System.out.println("3. View Book By Id");
             System.out.println("4. Update Book");
             System.out.println("5. Delete Book");
             System.out.println("6. Exit");
-            String menu = scannerUtil.readString("Choose menu: ");
+            System.out.println("=======================================\n");
+            String menu = scannerUtil.readString("Enter your choice: ");
 
             switch (menu) {
                 case "1" :
