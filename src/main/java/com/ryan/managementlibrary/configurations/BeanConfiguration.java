@@ -38,6 +38,15 @@ public class BeanConfiguration {
                 getBorrowBookController());
     }
 
+    @Bean
+    public AdminService getAdminService() {
+        return new AdminServiceImpl(getAdminRepository());
+    }
+
+    @Bean
+    public AdminRepository getAdminRepository() {
+        return new AdminRepositoryImpl(dataSource());
+    }
 
     @Bean
     public BorrowBookController getBorrowBookController() {
