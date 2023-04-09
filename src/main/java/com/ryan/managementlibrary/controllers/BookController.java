@@ -56,13 +56,13 @@ public class BookController {
     }
 
     public void viewAllBook() {
-        System.out.println("=====VIEW ALL BOOK=====");
+        System.out.println("===== VIEW ALL BOOK =====\n");
         List<Book> books = bookService.getAll();
         books.stream().forEach(book -> System.out.println(book.toString()));
     }
 
     public  void createBook() {
-        System.out.println("=====CREATE OR ADD BOOK=====");
+        System.out.println("===== CREATE OR ADD BOOK =====\n");
         String title = scannerUtil.readStringValidate("Input Title: ");
         String author = scannerUtil.readStringValidate("Input Author: ");
         String publisher = scannerUtil.readStringValidate("Input Publisher: ");
@@ -72,14 +72,14 @@ public class BookController {
     }
 
     public void viewBookById() {
-        System.out.println("=====VIEW BOOK BY ID=====");
+        System.out.println("===== VIEW BOOK BY ID =====\n");
         int id = scannerUtil.readInt("Input Book Id: ");
         Book book = bookService.findById(id);
         System.out.println(book);
     }
 
     public void updateBook() {
-        System.out.println("=====UPDATE BOOK=====");
+        System.out.println("===== UPDATE BOOK =====\n");
         int id = scannerUtil.readInt("Input Book Id: ");
         Book book = bookService.findById(id);
         if (book != null) {
@@ -97,7 +97,7 @@ public class BookController {
     }
 
     public void deleteBook() {
-        System.out.println("=====DELETE BOOK=====");
+        System.out.println("===== DELETE BOOK =====\n");
         int id = scannerUtil.readInt("Input Book Id: ");
         bookService.delete(id);
     }

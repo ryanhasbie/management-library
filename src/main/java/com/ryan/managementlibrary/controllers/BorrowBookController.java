@@ -70,13 +70,13 @@ public class BorrowBookController {
     }
 
     public void viewAllBorrowBook() {
-        System.out.println("=====VIEW ALL BORROW a BOOK");
+        System.out.println("===== VIEW ALL BORROW a BOOK =====\n");
         List<BorrowBookDto> borrowBookDtos = borrowBookService.getAll();
         borrowBookDtos.stream().forEach(borrowBook -> System.out.println(borrowBook.toString()));
     }
 
     public void addBorrowBook() {
-        System.out.println("====CREATE OR ADD BORROW a BOOK");
+        System.out.println("===== CREATE OR ADD BORROW a BOOK =====\n");
         System.out.println("Choose User: ");
         List<User> users = userService.getAll();
         users.stream().forEach(user -> System.out.println(user.toString()));
@@ -98,14 +98,14 @@ public class BorrowBookController {
     }
 
     public void viewBorrowBookById() {
-        System.out.println("=====VIEW BORROW a BOOK BY ID=====");
+        System.out.println("===== VIEW BORROW a BOOK BY ID =====\n");
         int id = scannerUtil.readInt("Input Borrow a Book Id: ");
         BorrowBookDto borrowBookDto = borrowBookService.findById(id);
         System.out.println(borrowBookDto);
     }
 
     public void updateBorrowBook() {
-        System.out.println("=====UPDATE BORROW a BOOK=====");
+        System.out.println("===== UPDATE BORROW a BOOK =====\n");
 
         System.out.println("Choose User: ");
         List<User> users = userService.getAll();
@@ -139,7 +139,7 @@ public class BorrowBookController {
     }
 
     public void deleteBorrowBook() {
-        System.out.println("=====DELETE BORROW a BOOK");
+        System.out.println("===== DELETE BORROW a BOOK =====\n");
         int id = scannerUtil.readInt("Input Borrow book id: ");
         borrowBookService.delete(id);
     }

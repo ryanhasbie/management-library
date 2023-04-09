@@ -35,7 +35,8 @@ public class BeanConfiguration {
     public MainController getMainController() {
         return new MainController(getBookController(),
                 getUserController(),
-                getBorrowBookController());
+                getBorrowBookController(),
+                getAdminService());
     }
 
     @Bean

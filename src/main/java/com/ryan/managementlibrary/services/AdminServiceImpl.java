@@ -21,7 +21,7 @@ public class AdminServiceImpl implements AdminService {
            }
            return false;
        } catch (Exception e) {
-           throw new RuntimeException();
+           throw new RuntimeException("Username / Password is invalid ...");
        }
     }
 }

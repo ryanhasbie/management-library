@@ -57,13 +57,13 @@ public class UserController {
     }
 
     public void viewAllUser() {
-        System.out.println("=====VIEW ALL USER=====");
+        System.out.println("===== VIEW ALL USER =====\n");
         List<User> users = userService.getAll();
         users.stream().forEach(user -> System.out.println(user.toString()));
     }
 
     public void addUser() {
-        System.out.println("=====CREATE OR ADD USER=====");
+        System.out.println("===== CREATE OR ADD USER =====\n");
         String name = scannerUtil.readStringValidate("Input name: ");
         String phoneNumber = scannerUtil.validatePhoneNumber("Input Phone Number: ");
         String address = scannerUtil.readStringValidate("Input Address: ");
@@ -72,14 +72,14 @@ public class UserController {
     }
 
     public void viewById() {
-        System.out.println("=====VIEW USER BY ID=====");
+        System.out.println("===== VIEW USER BY ID =====\n");
         int id = scannerUtil.readInt("Input user id: ");
         User user = userService.findById(id);
         System.out.println(user);
     }
 
     public void updateUser() {
-        System.out.println("=====UPDATE USER=====");
+        System.out.println("===== UPDATE USER =====\n");
         int id = scannerUtil.readInt("Input User Id: ");
         User user = userService.findById(id);
         if (user != null) {
@@ -95,7 +95,7 @@ public class UserController {
     }
 
     public void deleteUser() {
-        System.out.println("=====DELETE USER=====");
+        System.out.println("===== DELETE USER =====\n");
         int id = scannerUtil.readInt("Input Id User: ");
         userService.delete(id);
     }
