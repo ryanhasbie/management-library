@@ -17,12 +17,15 @@ public class MainController {
     }
 
     public void run() {
-        System.out.println("=====APPLICATION MANAGEMENT LIBRARY=====");
+        System.out.println("\n=======================================");
+        System.out.println("     APPLICATION MANAGEMENT LIBRARY      ");
+        System.out.println("=======================================\n");
         System.out.println("1. Manage Book");
         System.out.println("2. Manage User");
         System.out.println("3. Manage Borrow Book ");
         System.out.println("4. Exit");
-        String menu = scannerUtil.readString("Choose menu: ");
+        System.out.println("=======================================\n");
+        String menu = scannerUtil.readString("Enter your choice: ");
         switch (menu) {
             case "1" :
                 bookController.bookMenu();
