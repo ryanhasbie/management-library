@@ -32,13 +32,16 @@ public class BorrowBookController {
 
     public void menuBorrowBook() {
         while (true) {
-            System.out.println("=====BORROW A BOOK MENU=====");
+            System.out.println("\n=======================================");
+            System.out.println("            BORROW A BOOK MENU           ");
+            System.out.println("=======================================\n");
             System.out.println("1. View All Borrow a Book");
             System.out.println("2. Create or Add Borrow a Book");
             System.out.println("3. View Borrow a Book By Id");
             System.out.println("4. Update Borrow a Book");
             System.out.println("5. Delete Borrow a Book");
             System.out.println("6. Exit");
+            System.out.println("=======================================\n");
             String menu = scannerUtil.readString("Choose menu: ");
 
             switch (menu) {
