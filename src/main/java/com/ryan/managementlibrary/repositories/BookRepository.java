@@ -1,7 +1,6 @@
 package com.ryan.managementlibrary.repositories;
 
 import com.ryan.managementlibrary.models.Book;
-import com.ryan.managementlibrary.models.User;
 
 import java.util.List;
 import java.util.Optional;

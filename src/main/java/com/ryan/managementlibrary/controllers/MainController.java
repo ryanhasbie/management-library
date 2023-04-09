@@ -8,13 +8,13 @@ public class MainController {
     @Autowired
     private ScannerUtil scannerUtil;
     private final BookController bookController;
-    private final UserController userController;
+    private final MemberController memberController;
     private final BorrowBookController borrowBookController;
     private final AdminService adminService;
 
-    public MainController(BookController bookController, UserController userController, BorrowBookController borrowBookController, AdminService adminService) {
+    public MainController(BookController bookController, MemberController memberController, BorrowBookController borrowBookController, AdminService adminService) {
         this.bookController = bookController;
-        this.userController = userController;
+        this.memberController = memberController;
         this.borrowBookController = borrowBookController;
         this.adminService = adminService;
     }
@@ -31,7 +31,7 @@ public class MainController {
             System.out.println("             WELCOME ADMIN               ");
             System.out.println("=======================================\n");
             System.out.println("1. Manage Book");
-            System.out.println("2. Manage User");
+            System.out.println("2. Manage Member");
             System.out.println("3. Manage Borrow Book ");
             System.out.println("4. Exit");
             System.out.println("=======================================\n");
@@ -41,7 +41,7 @@ public class MainController {
                     bookController.bookMenu();
                     break;
                 case "2" :
-                    userController.userMenu();
+                    memberController.userMenu();
                     break;
                 case "3" :
                     borrowBookController.menuBorrowBook();

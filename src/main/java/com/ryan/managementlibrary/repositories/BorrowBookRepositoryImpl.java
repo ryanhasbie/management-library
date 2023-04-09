@@ -25,8 +25,8 @@ public class BorrowBookRepositoryImpl implements BorrowBookRepository {
     @Override
     public List<BorrowBookDto> getAll() throws Exception {
         try {
-            String sqlGetAll = "SELECT * FROM t_user tu " +
-                    "LEFT JOIN t_borrow_book tbw " + "ON tu.user_id = tbw.user_id " + "LEFT JOIN t_book tb "
+            String sqlGetAll = "SELECT * FROM t_member tm " +
+                    "LEFT JOIN t_borrow_book tbw " + "ON tm.member_id = tbw.member_id " + "LEFT JOIN t_book tb "
                     + "ON tbw.book_id = tb.book_id";
             return jdbcTemplate.query(sqlGetAll, new BorrowBookMapper());
         } catch (DataAccessException e) {
@@ -37,7 +37,7 @@ public class BorrowBookRepositoryImpl implements BorrowBookRepository {
     @Override
     public BorrowBook create(BorrowBook borrowBook) throws Exception {
         try {
-            String sqlInsertBorrow = "INSERT INTO t_borrow_book(date, user_id, book_id, status_borrow) VALUES(?,?,?,?)";
+            String sqlInsertBorrow = "INSERT INTO t_borrow_book(date, member_id, book_id, status_borrow) VALUES(?,?,?,?)";
             int result = jdbcTemplate.update(sqlInsertBorrow, borrowBook.getDate(), borrowBook.getUserId(), borrowBook.getBookId(), borrowBook.getStatus());
             if (result <= 0) {
                 throw new Exception("Failed to create borrow book!");
@@ -51,11 +51,13 @@ public class BorrowBookRepositoryImpl implements BorrowBookRepository {
     @Override
     public Optional<BorrowBookDto> findById(Integer id) throws Exception {
         try {
-            String sqlFindById = "SELECT * FROM t_borrow_book WHERE borrowbook_id = ?";
+            String sqlFindById = "SELECT * FROM t_member tm " +
+                    "LEFT JOIN t_borrow_book tbw " + "ON tm.member_id = tbw.member_id " + "LEFT JOIN t_book tb "
+                    + "ON tbw.book_id = tb.book_id " + "WHERE tbw.borrowbook_id = ?";
             BorrowBookDto borrowBookDto = jdbcTemplate.queryForObject(sqlFindById, new BorrowBookMapper(), new Object[]{id});
             return Optional.ofNullable(borrowBookDto);
         } catch (DataAccessException e) {
-            throw new Exception("Id borrow a book not found!");
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -69,7 +71,7 @@ public class BorrowBookRepositoryImpl implements BorrowBookRepository {
                     BorrowBook borrowBookMapper = new BorrowBook();
                     borrowBookMapper.setBorrowBookid(rs.getInt("borrowbook_id"));
                     borrowBookMapper.setDate(rs.getDate("date"));
-                    borrowBookMapper.setUserId(rs.getInt("user_id"));
+                    borrowBookMapper.setUserId(rs.getInt("member_id"));
                     borrowBookMapper.setBookId(rs.getInt("book_id"));
                     borrowBookMapper.setStatus(rs.getString("status_borrow"));
                     return borrowBookMapper;
@@ -84,7 +86,7 @@ public class BorrowBookRepositoryImpl implements BorrowBookRepository {
     @Override
     public void update(BorrowBook borrowBook, Integer id) throws Exception {
         try {
-            String sqlUpdate = "UPDATE t_borrow_book SET date = ?, user_id = ?, book_id = ?, status_borrow = ? WHERE borrowbook_id = ?";
+            String sqlUpdate = "UPDATE t_borrow_book SET date = ?, member_id = ?, book_id = ?, status_borrow = ? WHERE borrowbook_id = ?";
             jdbcTemplate.update(sqlUpdate, borrowBook.getDate(), borrowBook.getUserId(), borrowBook.getBookId(), borrowBook.getStatus(), id);
         } catch (DataAccessException e) {
             throw new Exception(e.getMessage());

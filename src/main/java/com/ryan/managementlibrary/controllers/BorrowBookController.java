@@ -2,31 +2,28 @@ package com.ryan.managementlibrary.controllers;
 
 import com.ryan.managementlibrary.models.Book;
 import com.ryan.managementlibrary.models.BorrowBook;
-import com.ryan.managementlibrary.models.User;
+import com.ryan.managementlibrary.models.Member;
 import com.ryan.managementlibrary.models.dto.BorrowBookDto;
-import com.ryan.managementlibrary.models.mappers.BookMapper;
-import com.ryan.managementlibrary.models.mappers.UserMapper;
 import com.ryan.managementlibrary.services.BookService;
 import com.ryan.managementlibrary.services.BorrowBookService;
-import com.ryan.managementlibrary.services.UserService;
+import com.ryan.managementlibrary.services.MemberService;
 import com.ryan.managementlibrary.utils.ScannerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class BorrowBookController {
     private final BorrowBookService borrowBookService;
-    private final UserService userService;
+    private final MemberService memberService;
     private final BookService bookService;
 
     @Autowired
     private ScannerUtil scannerUtil;
 
-    public BorrowBookController(BorrowBookService borrowBookService,  UserService userService, BookService bookService) {
+    public BorrowBookController(BorrowBookService borrowBookService, MemberService memberService, BookService bookService) {
         this.borrowBookService = borrowBookService;
-        this.userService = userService;
+        this.memberService = memberService;
         this.bookService = bookService;
     }
 
@@ -77,16 +74,16 @@ public class BorrowBookController {
 
     public void addBorrowBook() {
         System.out.println("===== CREATE OR ADD BORROW a BOOK =====\n");
-        System.out.println("Choose User: ");
-        List<User> users = userService.getAll();
-        users.stream().forEach(user -> System.out.println(user.toString()));
+        System.out.println("Choose Member: ");
+        List<Member> members = memberService.getAll();
+        members.stream().forEach(user -> System.out.println(user.toString()));
         System.out.println("------------------------------");
         System.out.println("Choose Book: ");
         List<Book> books = bookService.getAll();
         books.stream().forEach(book -> System.out.println(book.toString()));
         System.out.println("------------------------------");
         Date date = scannerUtil.validateDate("Input Date: ");
-        int userId = scannerUtil.readInt("Input Id User: ");
+        int userId = scannerUtil.readInt("Input Id Member: ");
         int bookId = scannerUtil.readInt("Input Book Id: ");
         String statusBorrow = scannerUtil.readStringValidate("Input Status Borrow: ");
         String statusBook = scannerUtil.readStringValidate("Input Status Book: ");
@@ -107,9 +104,9 @@ public class BorrowBookController {
     public void updateBorrowBook() {
         System.out.println("===== UPDATE BORROW a BOOK =====\n");
 
-        System.out.println("Choose User: ");
-        List<User> users = userService.getAll();
-        users.stream().forEach(user -> System.out.println(user.toString()));
+        System.out.println("Choose Member: ");
+        List<Member> members = memberService.getAll();
+        members.stream().forEach(user -> System.out.println(user.toString()));
         System.out.println("------------------------------");
         System.out.println("Choose Book: ");
         List<Book> books = bookService.getAll();
@@ -121,7 +118,7 @@ public class BorrowBookController {
 
         if (borrowBook != null) {
             Date date = scannerUtil.validateDate("Input Date: ");
-            int userId = scannerUtil.readInt("Input Id User: ");
+            int userId = scannerUtil.readInt("Input Id Member: ");
             int bookId = scannerUtil.readInt("Input Book Id: ");
             String statusBorrow = scannerUtil.readStringValidate("Input Status Borrow: ");
             borrowBook.setDate(date);

@@ -4,7 +4,7 @@ package com.ryan.managementlibrary.configurations;
 import com.ryan.managementlibrary.controllers.BookController;
 import com.ryan.managementlibrary.controllers.BorrowBookController;
 import com.ryan.managementlibrary.controllers.MainController;
-import com.ryan.managementlibrary.controllers.UserController;
+import com.ryan.managementlibrary.controllers.MemberController;
 import com.ryan.managementlibrary.repositories.*;
 import com.ryan.managementlibrary.services.*;
 import com.ryan.managementlibrary.utils.ScannerUtil;
@@ -65,17 +65,17 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public UserController getUserController() {
-        return new UserController(getUserService());
+    public MemberController getUserController() {
+        return new MemberController(getUserService());
     }
     @Bean
-    public UserService getUserService() {
-        return new UserServiceImpl(getUserRepository());
+    public MemberService getUserService() {
+        return new MemberServiceImpl(getUserRepository());
     }
 
     @Bean
-    public UserRepository getUserRepository() {
-        return new UserRepositoryImpl(dataSource());
+    public MemberRepository getUserRepository() {
+        return new MemberRepositoryImpl(dataSource());
     }
 
     @Bean

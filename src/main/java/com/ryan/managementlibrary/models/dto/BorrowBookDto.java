@@ -1,14 +1,14 @@
 package com.ryan.managementlibrary.models.dto;
 
 import com.ryan.managementlibrary.models.Book;
-import com.ryan.managementlibrary.models.User;
+import com.ryan.managementlibrary.models.Member;
 
 import java.util.Date;
 
 public class BorrowBookDto {
     private Integer borrowBookId;
     private Date date;
-    private User user;
+    private Member member;
     private Book book;
     private String statusBorrow;
 
@@ -28,12 +28,12 @@ public class BorrowBookDto {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public Member getUser() {
+        return member;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Member member) {
+        this.member = member;
     }
 
     public Book getBook() {
@@ -57,7 +57,7 @@ public class BorrowBookDto {
         return "BorrowBookDto{" +
                 "borrowBookId=" + borrowBookId +
                 ", date=" + date +
-                ", user=" + user +
+                ", member=" + member +
                 ", book=" + book +
                 ", statusBorrow='" + statusBorrow + '\'' +
                 '}';

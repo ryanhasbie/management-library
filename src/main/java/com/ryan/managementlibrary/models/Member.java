@@ -1,26 +1,26 @@
 package com.ryan.managementlibrary.models;
 
-public class User {
-    private Integer userId;
+public class Member {
+    private Integer memberId;
     private String name;
     private String phoneNumber;
     private String address;
 
-    public User() {
+    public Member() {
     }
 
-    public User(String name, String phoneNumber, String address) {
+    public Member(String name, String phoneNumber, String address) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
     public String getName() {
@@ -49,8 +49,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + userId +
+        return "Member{" +
+                "memberId=" + memberId +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +

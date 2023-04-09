@@ -1,8 +1,6 @@
 package com.ryan.managementlibrary.services;
 
-import com.ryan.managementlibrary.models.Book;
 import com.ryan.managementlibrary.models.BorrowBook;
-import com.ryan.managementlibrary.models.User;
 import com.ryan.managementlibrary.models.dto.BorrowBookDto;
 
 import java.util.List;

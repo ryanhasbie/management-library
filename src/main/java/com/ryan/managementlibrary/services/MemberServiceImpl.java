@@ -1,45 +1,45 @@
 package com.ryan.managementlibrary.services;
 
-import com.ryan.managementlibrary.models.User;
-import com.ryan.managementlibrary.repositories.UserRepository;
+import com.ryan.managementlibrary.models.Member;
+import com.ryan.managementlibrary.repositories.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class UserServiceImpl implements UserService{
+public class MemberServiceImpl implements MemberService {
 
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Override
-    public List<User> getAll() {
+    public List<Member> getAll() {
         try {
-            List<User> users = userRepository.getAll();
-            if (users.isEmpty()) {
+            List<Member> members = memberRepository.getAll();
+            if (members.isEmpty()) {
                 throw new Exception("User not found!");
             }
-            return users;
+            return members;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
     @Override
-    public User create(User user) {
+    public Member create(Member member) {
         try {
-            return userRepository.create(user);
+            return memberRepository.create(member);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
     @Override
-    public User findById(Integer id) {
+    public Member findById(Integer id) {
         try {
-            Optional<User> result = userRepository.findById(id);
+            Optional<Member> result = memberRepository.findById(id);
             if (result.isEmpty()) {
                 throw new Exception("User not found...");
             }
@@ -50,9 +50,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void update(User user, Integer id) {
+    public void update(Member member, Integer id) {
         try {
-            userRepository.update(user, id);
+            memberRepository.update(member, id);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void delete(Integer id) {
         try {
-            userRepository.delete(id);
+            memberRepository.delete(id);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

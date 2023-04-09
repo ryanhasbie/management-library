@@ -1,32 +1,32 @@
 package com.ryan.managementlibrary.controllers;
 
-import com.ryan.managementlibrary.models.User;
-import com.ryan.managementlibrary.services.UserService;
+import com.ryan.managementlibrary.models.Member;
+import com.ryan.managementlibrary.services.MemberService;
 import com.ryan.managementlibrary.utils.ScannerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class UserController {
-    private UserService userService;
+public class MemberController {
+    private MemberService memberService;
 
     @Autowired
     private ScannerUtil scannerUtil;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
     }
 
     public void userMenu() {
         while (true) {
             System.out.println("\n=======================================");
-            System.out.println("                 USER MENU               ");
+            System.out.println("               MEMBER MENU               ");
             System.out.println("=======================================\n");
-            System.out.println("1. View All User");
-            System.out.println("2. Create or Add User");
-            System.out.println("3. View User By Id");
-            System.out.println("4. Update User");
-            System.out.println("5. Delete User");
+            System.out.println("1. View All Member");
+            System.out.println("2. Create or Add Member");
+            System.out.println("3. View Member By Id");
+            System.out.println("4. Update Member");
+            System.out.println("5. Delete Member");
             System.out.println("6. Exit");
             System.out.println("=======================================\n");
             String menu = scannerUtil.readString("Enter your choice: ");
@@ -57,46 +57,46 @@ public class UserController {
     }
 
     public void viewAllUser() {
-        System.out.println("===== VIEW ALL USER =====\n");
-        List<User> users = userService.getAll();
-        users.stream().forEach(user -> System.out.println(user.toString()));
+        System.out.println("===== VIEW ALL MEMBER =====\n");
+        List<Member> members = memberService.getAll();
+        members.stream().forEach(user -> System.out.println(user.toString()));
     }
 
     public void addUser() {
-        System.out.println("===== CREATE OR ADD USER =====\n");
+        System.out.println("===== CREATE OR ADD MEMBER =====\n");
         String name = scannerUtil.readStringValidate("Input name: ");
         String phoneNumber = scannerUtil.validatePhoneNumber("Input Phone Number: ");
         String address = scannerUtil.readStringValidate("Input Address: ");
-        User user = new User(name, phoneNumber, address);
-        userService.create(user);
+        Member member = new Member(name, phoneNumber, address);
+        memberService.create(member);
     }
 
     public void viewById() {
-        System.out.println("===== VIEW USER BY ID =====\n");
-        int id = scannerUtil.readInt("Input user id: ");
-        User user = userService.findById(id);
-        System.out.println(user);
+        System.out.println("===== VIEW MEMBER BY ID =====\n");
+        int id = scannerUtil.readInt("Input Member id: ");
+        Member member = memberService.findById(id);
+        System.out.println(member);
     }
 
     public void updateUser() {
-        System.out.println("===== UPDATE USER =====\n");
-        int id = scannerUtil.readInt("Input User Id: ");
-        User user = userService.findById(id);
-        if (user != null) {
+        System.out.println("===== UPDATE MEMBER=====\n");
+        int id = scannerUtil.readInt("Input Member Id: ");
+        Member member = memberService.findById(id);
+        if (member != null) {
             String name = scannerUtil.readStringValidate("Input name: ");
             String phoneNumber = scannerUtil.validatePhoneNumber("Input Phone Number: ");
             String address = scannerUtil.readStringValidate("Input Address: ");
-            user.setName(name);
-            user.setPhoneNumber(phoneNumber);
-            user.setAddress(address);
-            userService.update(user, id);
+            member.setName(name);
+            member.setPhoneNumber(phoneNumber);
+            member.setAddress(address);
+            memberService.update(member, id);
             System.out.println("Update successfully");
         }
     }
 
     public void deleteUser() {
-        System.out.println("===== DELETE USER =====\n");
-        int id = scannerUtil.readInt("Input Id User: ");
-        userService.delete(id);
+        System.out.println("===== DELETE MEMBER =====\n");
+        int id = scannerUtil.readInt("Input Id Member: ");
+        memberService.delete(id);
     }
 }

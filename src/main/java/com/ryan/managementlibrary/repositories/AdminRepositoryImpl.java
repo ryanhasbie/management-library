@@ -1,7 +1,6 @@
 package com.ryan.managementlibrary.repositories;
 
 import com.ryan.managementlibrary.models.Admin;
-import com.ryan.managementlibrary.models.User;
 import com.ryan.managementlibrary.models.mappers.AdminMapper;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
