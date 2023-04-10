@@ -41,7 +41,7 @@ public class MainController {
                     bookController.bookMenu();
                     break;
                 case "2" :
-                    memberController.userMenu();
+                    memberController.memberMenu();
                     break;
                 case "3" :
                     borrowBookController.menuBorrowBook();

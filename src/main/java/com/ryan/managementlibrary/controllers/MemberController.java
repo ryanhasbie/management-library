@@ -17,7 +17,7 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    public void userMenu() {
+    public void memberMenu() {
         while (true) {
             System.out.println("\n=======================================");
             System.out.println("               MEMBER MENU               ");
@@ -33,19 +33,19 @@ public class MemberController {
 
             switch (menu) {
                 case "1" :
-                    viewAllUser();
+                    viewAllMember();
                     break;
                 case "2" :
-                    addUser();
+                    addMember();
                     break;
                 case "3" :
                     viewById();
                     break;
                 case "4" :
-                    updateUser();
+                    updateMember();
                     break;
                 case "5" :
-                    deleteUser();
+                    deleteMember();
                     break;
                 case "6" :
                     System.exit(0);
@@ -56,13 +56,13 @@ public class MemberController {
         }
     }
 
-    public void viewAllUser() {
+    public void viewAllMember() {
         System.out.println("===== VIEW ALL MEMBER =====\n");
         List<Member> members = memberService.getAll();
         members.stream().forEach(user -> System.out.println(user.toString()));
     }
 
-    public void addUser() {
+    public void addMember() {
         System.out.println("===== CREATE OR ADD MEMBER =====\n");
         String name = scannerUtil.readStringValidate("Input name: ");
         String phoneNumber = scannerUtil.validatePhoneNumber("Input Phone Number: ");
@@ -78,7 +78,7 @@ public class MemberController {
         System.out.println(member);
     }
 
-    public void updateUser() {
+    public void updateMember() {
         System.out.println("===== UPDATE MEMBER=====\n");
         int id = scannerUtil.readInt("Input Member Id: ");
         Member member = memberService.findById(id);
@@ -94,7 +94,7 @@ public class MemberController {
         }
     }
 
-    public void deleteUser() {
+    public void deleteMember() {
         System.out.println("===== DELETE MEMBER =====\n");
         int id = scannerUtil.readInt("Input Id Member: ");
         memberService.delete(id);
